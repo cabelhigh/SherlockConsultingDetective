@@ -18,18 +18,20 @@ ActiveRecord::Schema.define(version: 20170307081157) do
   create_table "addresses", force: :cascade do |t|
     t.string "name"
     t.string "address"
+    t.string "search_string"
+    t.string "subgroup"
   end
 
   create_table "cases", force: :cascade do |t|
     t.string  "name"
     t.integer "case_id"
+    t.boolean "current"
   end
 
   create_table "clues", force: :cascade do |t|
     t.string  "description"
-    t.integer "address_id"
-    t.index ["address_id"], name: "index_clues_on_address_id", using: :btree
+    t.string  "address"
+    t.integer "case_id"
   end
 
-  add_foreign_key "clues", "addresses"
 end

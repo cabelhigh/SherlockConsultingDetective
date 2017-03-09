@@ -8,14 +8,13 @@
 
 <% if @your_search.nil? %>
   <h2><u>WC Addresses</u></h2>
-  <!-- <% Address.where("address ~ '[0-9]WC'").each do |address| %> -->
-
+    <%# Address.where("address ~ '[0-9]WC'").each do |address| %>
 <% else %>
-<ul>
-  <% @your_search.each do |address| %>
-  <li>
-    <%= "<a href='/clues/#{address.get_clue_id}'>#{address.to_s}</a>".html_safe %>
-</li>
-  <% end %>
-</ul>
+  <ul>
+    <% @your_search.each do |address| %>
+    <li>
+      <%= "<a href='/clues/#{address.get_clue_id}'>#{address.to_s}</a>".html_safe %>
+    </li>
+    <% end %>
+  </ul>
 <% end %>

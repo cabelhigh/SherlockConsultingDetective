@@ -4,7 +4,8 @@ class AddressController < ApplicationController
   def search
     session[:search] = "" if session[:search].nil?
     session[:search] = params[:search] unless params[:search].nil?
-    @your_search = Address.where("\"search_string\" ~ '#{session[:search].downcase}'")
+    downcaseSearch = session[:search].downcase
+    @your_search = Address.where('search_string LIKE ?', '%' + downcaseSearch + '%').order(name: :asc ) if !downcaseSearch.include?("%") #so that you can search by column
     render 'index.html.erb'
   end
 

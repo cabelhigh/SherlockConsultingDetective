@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  post 'note/new'
+  get 'note/new'
+  get 'note' => 'note#new'
+  get 'note/create'
+  post 'create' => 'note#create'
+
+  get 'note/show'
+
+  get 'note/edit'
+
   root 'address#search'
 
   get '/search' => 'address#search'

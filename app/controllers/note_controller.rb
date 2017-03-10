@@ -29,7 +29,7 @@ class NoteController < ApplicationController
           address=Address.where(first_name: spl[i-1].camelcase, last_name: word.camelcase).first unless Address.where(first_name: spl[i-1].camelcase, last_name: word.camelcase).empty? #checks if the previous word is a first name, and if the first name and last name match more specific address, set address to it
         end
         puts address
-        word= "<a href='/clues/#{address.id}' title='#{address.comma_name_swap}'>#{word}</a>"
+        word= "<a href='/clues/#{address.id}' title='#{address.comma_name_swap}, #{address.address}'>#{word}</a>"
 
       else
         word

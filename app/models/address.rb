@@ -1,4 +1,5 @@
 class Address < ApplicationRecord
+  #has_paper_trail
 
   def to_s
     "#{self.name} -- #{self.address}"

@@ -18,3 +18,8 @@
 {
   text-decoration: line-through;
 }
+#mapid
+{
+    height: 1000px;
+    width: 1000px;
+}

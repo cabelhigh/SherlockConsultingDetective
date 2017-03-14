@@ -1,0 +1,8 @@
+<% @cleaned_up_notes.each do |note| %>
+  <% if !note.name.nil? %>
+    <h2><u><%= note.name%></u></h2>
+  <% else %>
+    <h2><u>Note</u></h2>
+  <% end %>
+  <%= note.text.html_safe %>
+<% end %>

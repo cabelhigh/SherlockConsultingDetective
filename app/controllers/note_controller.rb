@@ -12,6 +12,13 @@ class NoteController < ApplicationController
   def show
   end
 
+  def notes
+    @cleaned_up_notes = Note.all.inject([]) do |notes, note|
+      notes << note unless notes.map{|n| puts n.text; ActionView::Base.full_sanitizer.sanitize(n.text)}.include? ActionView::Base.full_sanitizer.sanitize(note.text)
+      notes
+    end
+  end
+
   def edit
   end
 

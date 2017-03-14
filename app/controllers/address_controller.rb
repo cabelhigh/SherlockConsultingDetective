@@ -1,5 +1,6 @@
 class AddressController < ApplicationController
 
+
   #  @wc = Address.where("address ~ '[0-9]WC'")
   def search
     session[:search] = "" if session[:search].nil?

@@ -14,9 +14,31 @@ $(document).ready ->
     imageUrl = "<%= asset_path('SherlockHolmesMap.png') %>"
     imageBounds = [[250,0], [0,250]];
     L.imageOverlay(imageUrl, imageBounds).addTo(map);
-  $(document).tooltip({
-    position: {
-      my: "center bottom",
-      at: "center top",
-    }
-  })
+    marker = L.marker([53.5, 31.5], {opacity: 1.0, alt: '4WC'}); #.addTo(map);
+    icon = marker.options.icon;
+    icon.options.iconSize = [2,2];
+    marker.setIcon(icon);
+    marker.addTo(map);
+    zoomLvl = 2;
+    map.on('zoomend', ->
+
+      iconSize = marker.options.icon.options.iconSize;
+      console.log(zoomLvl);
+      icon = marker.options.icon;
+      if map.getZoom() - zoomLvl > 0
+        zoomLvl=map.getZoom();
+        icon.options.iconSize = [iconSize[0]*zoomLvl, iconSize[1]*zoomLvl]
+      else
+        zoomLvl=map.getZoom();
+        icon.options.iconSize = [iconSize[0]/zoomLvl, iconSize[1]/zoomLvl]
+
+      marker.setIcon(icon)
+    )
+    $(".leaflet-marker-icon").click ->
+      window.location = window.location.protocol + "//" + window.location.host + "/clues/" + $(this).attr("alt");
+    $(document).tooltip({
+      position: {
+        my: "center bottom",
+        at: "center top",
+      }
+    })

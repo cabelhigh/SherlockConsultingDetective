@@ -1,10 +1,29 @@
-<%= button_to "Create note", action: "new", controller: "note" %>
+<div id="top-nav-bar" class="navbar navbar-inverse">
+  <div id="menu" class="container-fluid">
+    <div class="navbar-header">
+      <p style="color: white; padding: 10px;">Sherlock Holmes<br>Consulting Detective</p>
+    </div>
+    <ul class="middle nav navbar-nav">
+      <li><%= button_to "Create note", action: "new", controller: "note" %></li>
+      <li><%= button_to "View notes", action: </li>
+      <li>Just a test</li>
+    </ul>
+    <form class="navbar-form navbar-right" action="/search" method="get">
+      <div class="form-group">
 
-<form action="/search" method="get">
-  <label for="search_input">Search Name or Address</label>
-  <input id="search_input" type="text" name="search">
-  <input type="submit" value="Submit">
-</form>
+        <label for="search_input">Search Name or Address</label>
+        <input id="search_input" class="form-control" type="text" name="search">
+      </div>
+      <input type="submit" value="Submit">
+    </form>
+
+    </form>
+
+  </div>
+
+</div>
+
+
 
 <div id="mapid">
 

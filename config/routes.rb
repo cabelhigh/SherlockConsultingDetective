@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'note/show'
 
   get 'note/edit'
+  get 'notes' => 'note#notes'
 
   root 'address#search'
 
